@@ -1,0 +1,7 @@
+---
+- name: install common package
+  include: install.yml
+- name: create users
+  include: users.yml
+- name: install logwatch
+  include: logwatch.yml

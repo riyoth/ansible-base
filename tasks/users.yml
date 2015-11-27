@@ -1,0 +1,14 @@
+- user: name={{ user }} comment="My Admin"  group=sudo shell=/bin/bash
+- name: Set up authorized_keys for the Admin user
+  authorized_key: user={{ user }}
+                  key={{ user_key }}
+
+
+- name: configure 30-{{ user }} sudoers
+  lineinfile: dest=/etc/sudoers.d/30-{{ user }} owner=root group=root mode=0440
+              line="{{ user }} ALL=(ALL) NOPASSWD:ALL"
+              state=present
+              create=yes
+              validate='visudo -cf %s'
+
+
