@@ -7,5 +7,3 @@
   apt: pkg=vim state=latest
 - name: install rsync
   apt: pkg=rsync state=latest
-- name: install logwatch
-  apt: pkg=logwatch state=latest
