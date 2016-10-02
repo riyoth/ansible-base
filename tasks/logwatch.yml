@@ -4,3 +4,9 @@
 
 - name: create configuration
   template: src=logwatch.j2 dest=/etc/logwatch/conf/logwatch.conf
+
+- name: create weekly cronjob
+  template: src=00logwatch.sh.j2 dest=/etc/cron.weekly/00logwatch mode=0655
+
+- name: remove daily cronjob
+  file: path=/etc/cron.daily/00logwatch state=absent

@@ -5,3 +5,7 @@
   include: users.yml
 - name: install logwatch
   include: logwatch.yml
+- name: install New Relic
+  include: newrelic.yml
+- name: Install postfix + Mandrill
+  include: mandrill.yml

@@ -7,3 +7,7 @@
   apt: pkg=vim state=latest
 - name: install rsync
   apt: pkg=rsync state=latest
+- name: install curl
+  apt: pkg=curl state=latest
+- name: install python-pycurl
+  apt: pkg=python-pycurl state=latest
