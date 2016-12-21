@@ -11,3 +11,5 @@
   apt: pkg=curl state=latest
 - name: install python-pycurl
   apt: pkg=python-pycurl state=latest
+- name: install sudo
+  apt: pkg=sudo state=latest

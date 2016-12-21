@@ -7,5 +7,5 @@
   include: logwatch.yml
 - name: install New Relic
   include: newrelic.yml
-- name: Install postfix + Mandrill
-  include: mandrill.yml
+#- name: Install postfix + Mandrill
+#  include: mandrill.yml

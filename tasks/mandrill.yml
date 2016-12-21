@@ -1,0 +1,22 @@
+
+- name: install postfix
+  apt: pkg=postfix state=latest
+
+- name: install libsasl2
+  apt: pkg=libsasl2-modules
+
+- name: configure mandrill credential
+  template: src=saslpasswd.j2 dest='/etc/postfix/sasl/passwd'
+
+- name: postmap
+  command: /usr/sbin/postmap /etc/postfix/sasl/passwd
+
+- name: configure sender maps
+  template: src=sender_maps.j2 dest='/etc/postfix/relayhost_maps'
+
+- name: postmap
+  command: /usr/sbin/postmap /etc/postfix/relayhost_maps
+
+- name: configure postfix
+  template: src=main.cf.j2 dest=/etc/postfix/main.cf
+
