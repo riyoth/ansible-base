@@ -1,6 +1,6 @@
 - user: name={{ user }} comment="My Admin"  group=sudo shell=/bin/bash
 - name: Set up authorized_keys for the Admin user
-  authorized_key: user={{ user }}
+  authorized_key: user="{{ user }}"
                   key="{{ lookup('file', '{{ user }}.pub') }}"
 
 
