@@ -1,9 +1,9 @@
 ---
 - name: install common package
-  include: install.yml
+  import_tasks: install.yml
 - name: create users
-  include: users.yml
+  import_tasks: users.yml
 - name: install logwatch
-  include: logwatch.yml
+  import_tasks: logwatch.yml
 #- name: Install postfix + Mandrill
 #  include: mandrill.yml
