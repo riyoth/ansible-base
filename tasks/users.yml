@@ -1,12 +1,16 @@
-- user: name={{ user }} comment="My Admin"  group=sudo shell=/bin/bash
+- user: name={{ item.value.username }} comment="My Admin"  group=sudo shell=/bin/bash
+  with_dict: "{{ users }}"
+
 - name: Set up authorized_keys for the Admin user
-  authorized_key: user="{{ user }}"
-                  key="{{ lookup('file', '{{ user }}.pub') }}"
+  authorized_key: user={{ item.value.username }}
+                  key="{{ item.value.ssh_key }}"
+  with_dict: "{{ users }}"
 
 
-- name: configure 30-{{ user }} sudoers
-  lineinfile: dest=/etc/sudoers.d/30-{{ user }} owner=root group=root mode=0440
-              line="{{ user }} ALL=(ALL) NOPASSWD:ALL"
+- name: configure 30-{{ item.value.username }} sudoers
+  lineinfile: dest=/etc/sudoers.d/30-{{ item.value.username }} owner=root group=root mode=0440
+              line="{{ item.value.username }} ALL=(ALL) NOPASSWD:ALL"
               state=present
               create=yes
               validate='visudo -cf %s'
+  with_dict: "{{ users }}"
