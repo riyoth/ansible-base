@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Pier-Olivier Clement
+  description:  My basic configuration for Debian 
+  company: 
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  galaxy_tags:
+    - installer
+dependencies:
+
