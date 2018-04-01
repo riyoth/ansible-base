@@ -1,0 +1,9 @@
+{% if base_apt_cache is defined %}
+deb http://{{base_apt_cache}}/debian stretch main contrib
+deb http://{{base_apt_cache}}/debian stretch-updates main contrib
+deb http://security.debian.org stretch/updates main contrib
+{% else %}
+deb http://ftp.debian.org/debian stretch main contrib
+deb http://ftp.debian.org/debian stretch-updates main contrib
+deb http://security.debian.org stretch/updates main contrib
+{% endif %}

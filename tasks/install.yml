@@ -1,4 +1,6 @@
 ---
+- name: Set apt-cache if available
+  template: src=sources.list.j2 dest=/etc/apt/sources.list
 - name: install htop
   apt: pkg=htop state=latest
 - name: install git
