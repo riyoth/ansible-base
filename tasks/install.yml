@@ -1,6 +1,11 @@
 ---
 - name: Set apt-cache if available
   template: src=sources.list.j2 dest=/etc/apt/sources.list
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 #One day
 - name: install htop
   apt: pkg=htop state=latest
 - name: install git

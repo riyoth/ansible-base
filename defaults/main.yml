@@ -1,0 +1,9 @@
+---
+base_users:
+  - username: sysadmin
+    name: Generic Sysadmin user
+    admin: true
+    ssh_key:
+
+base_logwatch_email: root@localhost
+base_apt_cache: 

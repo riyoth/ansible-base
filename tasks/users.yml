@@ -3,13 +3,13 @@
     comment: "Dreamhack Team network user"
     group: sudo
     shell: /bin/bash
-  loop: "{{ users }}"
+  loop: "{{ base_users }}"
 
 - name: Set up authorized_keys for the Admin user
   authorized_key:
     user: "{{ item.username }}"
     key: "{{ item.ssh_key }}"
-  loop: "{{ users }}"
+  loop: "{{ base_users }}"
 
 - name: configure 30-{{ item.username }} sudoers
   lineinfile:
@@ -21,4 +21,4 @@
     state: present
     create: yes
     validate: 'visudo -cf %s'
-  loop: "{{ users }}"
+  loop: "{{ base_users }}"
